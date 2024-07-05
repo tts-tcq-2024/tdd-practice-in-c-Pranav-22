@@ -1,6 +1,7 @@
 Given below table are the inputs for the add function and following result is expected
 
 input     result
+Hello world  0
 0          0
 ""         0
 1,2        3
