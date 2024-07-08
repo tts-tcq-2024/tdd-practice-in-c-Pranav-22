@@ -1,4 +1,4 @@
-int check_ch(char *ch)
+int check_ch(const char *ch)
 {
     int i = 0;
     int str_len = strlen(ch);
