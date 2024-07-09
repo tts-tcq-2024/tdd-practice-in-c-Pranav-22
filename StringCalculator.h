@@ -5,7 +5,10 @@ int add_arr(int *arr,int cnt)
     int total = 0;
     while(i < cnt)
     {
-        total += arr[i];
+        if(arr[i] < 1000)
+        {
+          total += arr[i];
+        }
         i++;
     }
 
@@ -36,16 +39,9 @@ int sum(const char *ch)
             }
             else
             {
-                if(num < 1000)
-                {
                   num_arr[i] = num;
                   num = 0;
                   i++;
-                }
-                else
-                {
-                    i++;
-                }
             }
         }
         else
