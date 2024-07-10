@@ -66,7 +66,7 @@ TEST(StringCalculatorAddTests, nullstring) {
 }
 
 TEST(StringCalculatorAddTests, emptystring) {
-    int expectedresult = -1;
+    int expectedresult = 0;
     const char*  input = "";
     int result = add(input);
     ASSERT_EQ(result, expectedresult);
