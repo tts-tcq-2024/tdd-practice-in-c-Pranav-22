@@ -1,4 +1,3 @@
-
 int add_arr(int *arr,int cnt)
 {
     int i = 0;
@@ -14,6 +13,7 @@ int add_arr(int *arr,int cnt)
 
     return total;
 }
+
 int check_ch(const char ch)
 {
     if(ch >= '0' && ch <= '9')
@@ -22,45 +22,49 @@ int check_ch(const char ch)
     }
     return 0;
 }
+
+int strtonum(const char* ch, int *num_arr,int *cnt)
+{
+    static int num = 0;
+
+    if(check_ch(ch[*cnt]))
+    {
+       num = num * 10 + ch[*cnt] - '0';
+       if(check_ch(ch[(*cnt)+1]))
+       {
+           (*cnt)++;
+       }
+       else
+       {
+          num_arr[*cnt] = num;
+          num = 0;
+          (*cnt)++;
+       }
+    }
+    else
+    {
+        (*cnt)++;
+        num = 0;
+    }
+}
 int sum(const char *ch)
 {
-    int str_len = strlen(ch);
-    int i =0,j=0,num = 0;
+    int cnt =0;
     int total = 0;
     int num_arr[100] = {0};
-    while(ch[i] != '\0')
+    while(ch[cnt] != '\0')
     {
-        if(check_ch(ch[i]))
-        {
-            num = num * 10 + ch[i] - '0';
-            if(check_ch(ch[i+1]))
-            {
-                i++;
-            }
-            else
-            {
-                  num_arr[i] = num;
-                  num = 0;
-                  i++;
-            }
-        }
-        else
-        {
-            i++;
-        }
+        strtonum(ch,num_arr,&cnt);
     }
 
-    total = add_arr(num_arr,i);
+    total = add_arr(num_arr,cnt);
 
     return total;
 }
 
 int check_string(const char *ch)
 {
-    int i = 0;
-    int str_len = strlen(ch);
-
-    if(ch != NULL && str_len > 0)
+    if(ch != NULL)
     {
         return 1;
     }
