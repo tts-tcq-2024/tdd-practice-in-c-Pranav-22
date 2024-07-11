@@ -66,8 +66,23 @@ TEST(StringCalculatorAddTests, nullstring) {
 }
 
 TEST(StringCalculatorAddTests, emptystring) {
-    int expectedresult = 0;
+    int expectedresult = -1;
     const char*  input = "";
     int result = add(input);
     ASSERT_EQ(result, expectedresult);
 }
+
+TEST(StringCalculatorAddTests, posandnegstring) {
+    int expectedresult = -1;
+    const char*  input = "1,-2";
+    int result = add(input);
+    ASSERT_EQ(result, expectedresult);
+}
+
+TEST(StringCalculatorAddTests, numnegsymbolstring) {
+    int expectedresult = 3;
+    const char*  input = "1,-,2";
+    int result = add(input);
+    ASSERT_EQ(result, expectedresult);
+}
+
