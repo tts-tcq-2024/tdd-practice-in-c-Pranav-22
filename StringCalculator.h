@@ -14,7 +14,9 @@ int add_arr(int *arr,int cnt)
     return total;
 }
 
-int check_ch(const char ch)
+
+
+int check_num(const char ch)
 {
     if(ch >= '0' && ch <= '9')
     {
@@ -27,10 +29,10 @@ int strtonum(const char* ch, int *num_arr,int *cnt)
 {
     static int num = 0;
 
-    if(check_ch(ch[*cnt]))
+    if(check_num(ch[*cnt]))
     {
        num = num * 10 + ch[*cnt] - '0';
-       if(check_ch(ch[(*cnt)+1]))
+       if(check_num(ch[(*cnt)+1]))
        {
            (*cnt)++;
        }
@@ -47,6 +49,7 @@ int strtonum(const char* ch, int *num_arr,int *cnt)
         num = 0;
     }
 }
+
 int sum(const char *ch)
 {
     int cnt =0;
@@ -54,7 +57,7 @@ int sum(const char *ch)
     int num_arr[100] = {0};
     while(ch[cnt] != '\0')
     {
-        strtonum(ch,num_arr,&cnt);
+       strtonum(ch,num_arr,&cnt);
     }
 
     total = add_arr(num_arr,cnt);
@@ -62,11 +65,29 @@ int sum(const char *ch)
     return total;
 }
 
+int check_neg(const char *ch)
+{
+    for(int i=0; ch[i] != '\0'; i++)
+    {
+      if(ch[i] == '-')
+      {
+          if(check_num(ch[i+1]))
+          {
+              return 0;
+          }
+      }
+    }
+    return 1;
+}
+
 int check_string(const char *ch)
 {
     if(ch != NULL)
     {
-        return 1;
+       if(check_neg(ch))
+       {
+           return 1;
+       }
     }
 
     return 0;
