@@ -67,7 +67,8 @@ int sum(const char *ch)
 
 int check_neg(const char *ch)
 {
-    for(int i=0; ch[i] != '\0'; i++)
+   int i= 0;
+    while(ch[i] != '\0')
     {
       if(ch[i] == '-')
       {
@@ -76,6 +77,7 @@ int check_neg(const char *ch)
               return 0;
           }
       }
+      i++;
     }
     return 1;
 }
