@@ -65,11 +65,9 @@ int sum(const char *ch)
     return total;
 }
 
-int check_neg(const char *ch)
+
+int neg_loop(const char *ch,int i)
 {
-   int i= 0;
-    while(ch[i] != '\0')
-    {
       if(ch[i] == '-')
       {
           if(check_num(ch[i+1]))
@@ -77,9 +75,22 @@ int check_neg(const char *ch)
               return 0;
           }
       }
+    return 1;
+}
+
+int check_neg(const char *ch)
+{
+    int res = 0,i=0;
+    while(ch[i] != '\0')
+    {
+      res = neg_loop(ch,i);
+      if(res == 0)
+      {
+          break;
+      }
       i++;
     }
-    return 1;
+    return res;
 }
 
 int check_string(const char *ch)
