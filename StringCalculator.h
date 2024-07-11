@@ -25,7 +25,7 @@ int check_num(const char ch)
     return 0;
 }
 
-int strtonum(const char* ch, int *num_arr,int *cnt)
+void strtonum(const char* ch, int *num_arr,int *cnt)
 {
     static int num = 0;
 
