@@ -107,10 +107,14 @@ int check_string(const char *ch)
 {
     if(ch != NULL)
     {
-       if(check_neg(ch) || check_empty(ch))
+       if(check_neg(ch))
        {
            return 1;
        }
+        else if(check_empty(ch))
+        {
+            return 1;
+        }
     }
 
     return 0;
