@@ -103,18 +103,25 @@ int check_empty(const char* ch)
     return 0;
 }
 
-int check_string(const char *ch)
+int check_neg_empty(const char *ch)
 {
-    if(ch != NULL)
-    {
        if(check_neg(ch))
        {
            return 1;
        }
-        else if(check_empty(ch))
-        {
-            return 1;
-        }
+       else if(check_empty(ch))
+       {
+           return 1;
+       }
+
+       return 0;
+}
+
+int check_string(const char *ch)
+{
+    if(ch != NULL)
+    {
+        return check_neg_empty(ch);
     }
 
     return 0;
