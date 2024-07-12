@@ -92,12 +92,22 @@ int check_neg(const char *ch)
     }
     return res;
 }
+int check_empty(const char* ch)
+{
+    int strlength = strlen(ch);
+
+    if(strlength == 0)
+    {
+        return 1;
+    }
+    return 0;
+}
 
 int check_string(const char *ch)
 {
     if(ch != NULL)
     {
-       if(check_neg(ch))
+       if(check_neg(ch) || check_empty(ch))
        {
            return 1;
        }
